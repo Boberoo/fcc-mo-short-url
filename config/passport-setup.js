@@ -34,11 +34,12 @@ passport.use(
 					newUser.github.id = profile.id;
 					newUser.github.username = profile.username;
 					newUser.github.displayName = profile.displayName;
+					newUser.github.publicRepo = profile._json.public_repos;
 					newUser.save(function (err) {
 						if (err) {
 							throw err;
 						}
-
+						console.log("new User " + newUser);
 						return done(null, newUser);
 					});
 				}
